@@ -24,19 +24,16 @@ def number_1181():
     # 조건에 따라 정렬하여 단어들을 출력한다. 단, 같은 단어가 여러번 입력된 경우에는 한 번씩만 출력한다.
 
     def sort_logic(x):
-        print(x)
-        return len(x), ord(x[0])
+        return len(x), x
 
     word_set = set()
     for i in range(int(input())):
         word_set.add(input())
 
-    print(sorted(list(word_set), key=lambda x: sort_logic(x, len(x))))
-
-    # for i in sorted(list(word_list)):
-    #     print(i)
+    for i in sorted(list(word_set), key=lambda x: sort_logic(x)):
+        print(i)
 
 
 if __name__ == '__main__':
-    # number_2751()
+    number_2751()
     number_1181()
