@@ -65,3 +65,18 @@ def test_number_1931():
             temp = j
             result += 1
     print(result)
+
+# def test_number_10989():
+#     # N개의 수가 주어졌을 때, 이를 오름차순으로 정렬하는 프로그램을 작성하시오.
+#
+#     # 첫째 줄에 수의 개수 N(1 ≤ N ≤ 10,000,000)이 주어진다. 둘째 줄부터 N개의 줄에는 수가 주어진다. 이 수는 10,000보다 작거나 같은 자연수이다.
+#
+#     # 첫째 줄부터 N개의 줄에 오름차순으로 정렬한 결과를 한 줄에 하나씩 출력한다.
+#
+#     example_list = deque(['10', '5', '2', '3', '1', '4', '2', '3', '5', '1', '7'])
+#
+#     number_list = []
+#     for i in range(int(example_list.popleft())):
+#         number_list.append(int(example_list.popleft()))
+#
+#     print(sorted(number_list))
