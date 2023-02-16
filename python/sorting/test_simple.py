@@ -67,61 +67,24 @@ def test_number_1931():
     print(result)
 
 
-# def test_number_10989():
-#     # N개의 수가 주어졌을 때, 이를 오름차순으로 정렬하는 프로그램을 작성하시오.
-#
-#     # 첫째 줄에 수의 개수 N(1 ≤ N ≤ 10,000,000)이 주어진다. 둘째 줄부터 N개의 줄에는 수가 주어진다. 이 수는 10,000보다 작거나 같은 자연수이다.
-#
-#     # 첫째 줄부터 N개의 줄에 오름차순으로 정렬한 결과를 한 줄에 하나씩 출력한다.
-#
-#     example_list = deque(['10', '5', '2', '3', '1', '4', '2', '3', '5', '1', '7'])
-#
-#     class Node:
-#         def __init__(self, data, next_node=None):
-#             self.data = data
-#             self.next_node = None
-#
-#     class LinkedList:
-#         def __init__(self, head):
-#             self.head = Node(head)
-#
-#         def first_insert(self, new_node):
-#             new_node.next_node = self.head
-#             self.head = new_node
-#
-#         def insert(self, cur_node, new_node):
-#             new_node.next_node = cur_node.next_node
-#             cur_node.next_node = new_node
-#
-#         def show(self):
-#             cur_node = self.head
-#             while cur_node.next_node is not None:
-#                 print(cur_node.data)
-#                 cur_node = cur_node.next_node
-#             print(cur_node.data)
-#
-#     max_len = int(example_list.popleft())
-#     linked_list = LinkedList(int(example_list.popleft()))
-#
-#     for i in range(max_len - 1):
-#         cur_node = linked_list.head
-#         new_node = Node(int(example_list.popleft()))
-#         if cur_node.data <= new_node.data:
-#             while True:
-#                 if cur_node.next_node:
-#                     tmp = cur_node.next_node
-#                     if new_node.data <= tmp.data:
-#                         linked_list.insert(cur_node, new_node)
-#                         break
-#                     else:
-#                         cur_node = tmp
-#                 else:
-#                     linked_list.insert(cur_node, new_node)
-#                     break
-#         else:
-#             linked_list.first_insert(new_node)
-#
-#     linked_list.show()
+def test_number_10989():
+    # N개의 수가 주어졌을 때, 이를 오름차순으로 정렬하는 프로그램을 작성하시오.
+
+    # 첫째 줄에 수의 개수 N(1 ≤ N ≤ 10,000,000)이 주어진다. 둘째 줄부터 N개의 줄에는 수가 주어진다. 이 수는 10,000보다 작거나 같은 자연수이다.
+
+    # 첫째 줄부터 N개의 줄에 오름차순으로 정렬한 결과를 한 줄에 하나씩 출력한다.
+
+    example_list = deque(['10', '5', '2', '3', '1', '4', '2', '3', '5', '1', '7'])
+
+    index_list = [0] * 10001
+
+    for _ in range(int(example_list.popleft())):
+        index_list[int(example_list.popleft())] += 1
+
+    for i in range(10001):
+        if index_list[i]:
+            for _ in range(index_list[i]):
+                print(i)
 
 
 def test_number_10816():
@@ -160,3 +123,38 @@ def test_number_11650():
 
     for i in sorted(tuple_list, key=lambda x: (x[0], x[1])):
         print(i[0], i[1])
+
+
+# def test_number_2108():
+#     # 수를 처리하는 것은 통계학에서 상당히 중요한 일이다. 통계학에서 N개의 수를 대표하는 기본 통계값에는 다음과 같은 것들이 있다. 단, N은 홀수라고 가정하자.
+#     # 산술평균 : N개의 수들의 합을 N으로 나눈 값
+#     # 중앙값 : N개의 수들을 증가하는 순서로 나열했을 경우 그 중앙에 위치하는 값
+#     # 최빈값 : N개의 수들 중 가장 많이 나타나는 값
+#     # 범위 : N개의 수들 중 최댓값과 최솟값의 차이
+#     # N개의 수가 주어졌을 때, 네 가지 기본 통계값을 구하는 프로그램을 작성하시오.
+#
+#     # 첫째 줄에 수의 개수 N(1 ≤ N ≤ 500,000)이 주어진다. 단, N은 홀수이다. 그 다음 N개의 줄에는 정수들이 주어진다. 입력되는 정수의 절댓값은 4,000을 넘지 않는다.
+#
+#     # 첫째 줄에는 산술평균을 출력한다. 소수점 이하 첫째 자리에서 반올림한 값을 출력한다.
+#     # 둘째 줄에는 중앙값을 출력한다.
+#     # 셋째 줄에는 최빈값을 출력한다. 여러 개 있을 때에는 최빈값 중 두 번째로 작은 값을 출력한다.
+#     # 넷째 줄에는 범위를 출력한다.
+#
+#     example_list = deque(['5', '1', '3', '8', '-2', '2'])
+#
+#     from collections import Counter
+#
+#     number_list = [0 for i in range(int(example_list.popleft()))]
+#     for i in range(len(number_list)):
+#         number_list[i] = int(example_list.popleft())
+#
+#     number_list.sort()
+#     print(int(sum(number_list) / len(number_list)))
+#     print(number_list[int((len(number_list) - 1) / 2)])
+#     n_dict = Counter(number_list)
+#     n_list = sorted(filter(lambda x: n_dict[x] == max(map(lambda x: n_dict[x], n_dict)), n_dict))
+#     if len(n_list) > 1:
+#         print(n_list[1])
+#     else:
+#         print(n_list[0])
+#     print(number_list[-1] - number_list[0])
