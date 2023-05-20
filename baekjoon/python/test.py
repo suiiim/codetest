@@ -38,9 +38,16 @@ def test_number_14501():
                 if term <= left_day:
                     tmp.setdefault(term - 1, list())
                     tmp[term - 1].append(result[i][1] + pay)
-        tmp.setdefault(term - 1, list())
-        tmp[term - 1].append(pay)
-        result = list(map(lambda x: [x[0], max(x[1])], tmp.items()))
-        left_day -= 1
 
-    print(max(map(lambda x: x[1], filter(lambda x: x[0] == 0, result))))
+        result = list(map(lambda x: [x[0], max(x[1])], tmp.items()))
+        if term <= left_day:
+            result.append([term - 1, pay])
+        left_day -= 1
+    if list(filter(lambda x: x[0] == 0, result)):
+        print(max(map(lambda x: x[1], filter(lambda x: x[0] == 0, result))))
+    else:
+        print(0)
+
+
+if __name__ == '__main__':
+    test_number_14501()
