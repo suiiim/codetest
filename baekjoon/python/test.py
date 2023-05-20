@@ -49,5 +49,3 @@ def test_number_14501():
         print(0)
 
 
-if __name__ == '__main__':
-    test_number_14501()
