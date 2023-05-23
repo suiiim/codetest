@@ -14,7 +14,7 @@ def test_number_11047():
     # example_list = deque(['10 4790', '1', '5', '10', '50', '100', '500', '1000', '5000', '10000', '50000'])
 
     n, k = map(int, example_list.popleft().split())
-    money = [0 for i in range(n)]
+    money = [0 for _ in range(n)]
     for i in range(n):
         money[i] = int(example_list.popleft())
 
