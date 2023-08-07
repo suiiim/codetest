@@ -57,5 +57,36 @@ def solution(example_list):
         print(i)
 
 
+def solution1(example_list):
+    result = []
+
+    def dfs(x, y):
+        cnt = 0
+        if map_img[x][y]:
+            map_img[x][y] = 0
+            cnt += 1
+            for x_, y_ in [(x - 1, y), (x, y - 1), (x + 1, y), (x, y + 1)]:
+                if map_img[x_][y_]:
+                    cnt += dfs(x_, y_)
+        return cnt
+
+    size = int(example_list.popleft())
+    map_img = [[0] * (size + 2)] * (size + 2)
+    for i in range(1, size + 1):
+        graph = [int(x) for x in ''.join(["0", example_list.popleft(), "0"])]
+        map_img[i] = graph
+
+    for a in range(1, size + 1):
+        for b in range(1, size + 1):
+            tmp = dfs(a, b)
+            if tmp:
+                result.append(tmp)
+
+    print(len(result))
+    for i in sorted(result):
+        print(i)
+
+
 if __name__ == '__main__':
-    solution(deque(['7', '0110100', '0110101', '1110101', '0000111', '0100000', '0111110', '0111000']))  # 3 7 8 9
+    # solution(deque(['7', '0110100', '0110101', '1110101', '0000111', '0100000', '0111110', '0111000']))  # 3 7 8 9
+    solution1(deque(['7', '0110100', '0110101', '1110101', '0000111', '0100000', '0111110', '0111000']))  # 3 7 8 9
