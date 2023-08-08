@@ -35,14 +35,15 @@ def solution(example_list):
         for m_ in range(1, m + 1):
             for n_ in range(1, n + 1):
                 if graph[m_][n_]:
-                    dq = deque([(m_, n_)])
+                    graph[m_][n_] = 0
+                    tmp = [(m_, n_)]
                     cnt += 1
-                    while dq:
-                        x, y = dq.popleft()
-                        graph[x][y] = 0
-                        for x_, y_ in ((x - 1, y), (x, y - 1), (x + 1, y), (x, y + 1)):
-                            if graph[x_][y_]:
-                                dq = deque([(x_, y_)])
+                    while tmp:
+                        x, y = tmp.pop()
+                        for x_, y_ in [(- 1, 0), (0, - 1), (1, 0), (0, 1)]:
+                            if graph[x + x_][y + y_]:
+                                graph[x + x_][y + y_] = 0
+                                tmp.append((x + x_, y + y_))
         print(cnt)
 
 
@@ -71,6 +72,6 @@ def solution1(example_list):
 
 
 if __name__ == '__main__':
-    solution1(deque(['2', '10 8 17', '0 0', '1 0', '1 1', '4 2', '4 3', '4 5', '2 4', '3 4', '7 4', '8 4', '9 4', '7 5', '8 5', '9 5', '7 6', '8 6', '9 6', '10 10 1', '5 5']))  # 5 1
-    solution1(deque(['1', '5 3 6', '0 2', '1 2', '2 2', '3 2', '4 2', '4 0']))  # 2
-    solution1(deque(['1', '2 3 6', '0 0', '0 1', '0 2', '1 0', '1 1', '1 2']))  # 2
+    solution(deque(['2', '10 8 17', '0 0', '1 0', '1 1', '4 2', '4 3', '4 5', '2 4', '3 4', '7 4', '8 4', '9 4', '7 5', '8 5', '9 5', '7 6', '8 6', '9 6', '10 10 1', '5 5']))  # 5 1
+    solution(deque(['1', '5 3 6', '0 2', '1 2', '2 2', '3 2', '4 2', '4 0']))  # 2
+    solution(deque(['1', '2 3 6', '0 0', '0 1', '0 2', '1 0', '1 1', '1 2']))  # 1

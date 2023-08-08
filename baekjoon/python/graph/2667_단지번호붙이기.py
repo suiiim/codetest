@@ -25,20 +25,20 @@ def solution(example_list):
     size = int(example_list.popleft())
     map_img = [[0] * (size + 2)] * (size + 2)
     for i in range(1, size + 1):
-        graph = [int(x) for x in "0" + example_list.popleft() + "0"]
+        graph = [int(x) for x in ''.join(["0", example_list.popleft(), "0"])]
         map_img[i] = graph
 
     a, b = 1, 1
     while True:
         if map_img[a][b]:
-            dq = deque([(a, b)])
-            cnt = 1
+            tmp = [(a, b)]
             map_img[a][b] = 0
-            while dq:
-                x, y = dq.popleft()
+            cnt = 1
+            while tmp:
+                x, y = tmp.pop()
                 for _x, _y in [(x - 1, y), (x, y - 1), (x + 1, y), (x, y + 1)]:
                     if map_img[_x][_y]:
-                        dq.append((_x, _y))
+                        tmp.append((_x, _y))
                         map_img[_x][_y] = 0
                         cnt += 1
             result.append(cnt)
