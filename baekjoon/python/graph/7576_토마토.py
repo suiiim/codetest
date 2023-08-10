@@ -53,9 +53,37 @@ def solution(example_list):
         print(cnt)
 
 
+def solution1(example_list):
+    a, b = map(int, example_list.popleft().split())
+
+    one = deque([])
+    graph = [[-1] * (a + 2)]
+    for x in range(1, b + 1):
+        tmp = list(map(int, f"-1 {example_list.popleft()} -1".split()))
+        for y, v in enumerate(tmp):
+            if v == 1:
+                one.append((x, y))
+        graph.append(tmp)
+    graph.append([-1] * (a + 2))
+
+    while one:
+        x, y = one.popleft()
+        for x_, y_ in [(-1, 0), (0, -1), (1, 0), (0, 1)]:
+            if graph[x + x_][y + y_] == 0:
+                graph[x + x_][y + y_] = graph[x][y] + 1
+                one.append((x + x_, y + y_))
+    cnt = 0
+    for line in graph:
+        if 0 in line:
+            print(-1)
+            return
+        cnt = max(cnt, max(line))
+    print(cnt - 1)
+
+
 if __name__ == '__main__':
-    solution(deque(['6 4', '0 0 0 0 0 0', '0 0 0 0 0 0', '0 0 0 0 0 0', '0 0 0 0 0 1']))  # 8
-    solution(deque(['6 4', '0 -1 0 0 0 0', '-1 0 0 0 0 0', '0 0 0 0 0 0', '0 0 0 0 0 1']))  # -1
-    solution(deque(['6 4', '1 -1 0 0 0 0', '0 -1 0 0 0 0', '0 0 0 0 -1 0', '0 0 0 0 -1 1']))  # 6
-    solution(deque(['5 5', '-1 1 0 0 0', '0 -1 -1 -1 0', '0 -1 -1 -1 0', '0 -1 -1 -1 0', '0 0 0 0 0']))  # 14
-    solution(deque(['2 2', '1 -1', '-1 1']))  # 0
+    solution1(deque(['6 4', '0 0 0 0 0 0', '0 0 0 0 0 0', '0 0 0 0 0 0', '0 0 0 0 0 1']))  # 8
+    solution1(deque(['6 4', '0 -1 0 0 0 0', '-1 0 0 0 0 0', '0 0 0 0 0 0', '0 0 0 0 0 1']))  # -1
+    solution1(deque(['6 4', '1 -1 0 0 0 0', '0 -1 0 0 0 0', '0 0 0 0 -1 0', '0 0 0 0 -1 1']))  # 6
+    solution1(deque(['5 5', '-1 1 0 0 0', '0 -1 -1 -1 0', '0 -1 -1 -1 0', '0 -1 -1 -1 0', '0 0 0 0 0']))  # 14
+    solution1(deque(['2 2', '1 -1', '-1 1']))  # 0
