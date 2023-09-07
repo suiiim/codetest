@@ -22,18 +22,22 @@ def solution(example_list):
     cnt = int(example_list.popleft())
     stair = [int(example_list.popleft()) for _ in range(cnt)]
 
-    dp = [0] * (cnt + 1)
+    dp = [0] * cnt
 
-    for i in range(1, cnt + 1):
-        if i == 1:
-            dp[i] = stair[i - 1]
+    for i, v in enumerate(stair):
+        if i == 0:
+            dp[0] = v
+        elif i == 1:
+            dp[1] = max(stair[0] + v, v)
         elif i == 2:
-            dp[i] = dp[i - 1] + stair[i - 1]
+            dp[2] = max(stair[i - 2] + v, stair[i - 1] + v)
         else:
-            dp[i] = max(stair[i - 1] + stair[i - 2] + dp[i - 3], stair[i - 1] + dp[i - 2])
+            dp[i] = max(dp[i - 3] + stair[i - 1] + v, dp[i - 2] + v)
 
     print(dp[-1])
 
 
 if __name__ == '__main__':
     solution(deque(['6', '10', '20', '15', '25', '10', '20']))  # 75
+    solution(deque(['10', '3', '5', '10', '9', '2', '1', '2', '5', '2', '9']))  # 37
+    solution(deque(['6', '1', '1', '2', '2', '1', '1']))  # 6
