@@ -79,27 +79,27 @@ def solution3(x: int, y: int, n: int) -> int:
 if __name__ == '__main__':
     start = time.time()
     print(solution1(1, 500, 5))
-    print(solution1(10, 40, 5))
-    print(solution1(10, 40, 30))
-    print(solution1(10, 50, 30))
-    print(solution1(2, 5, 4))
+    print(solution1(10, 40, 5))  # 2
+    print(solution1(10, 40, 30))  # 1
+    print(solution1(10, 50, 30))  #
+    print(solution1(2, 5, 4))  # -1
     end = time.time()
     print(end - start)
 
     start = time.time()
     print(solution2(1, 500, 5))
-    print(solution2(10, 40, 5))
-    print(solution2(10, 40, 30))
+    print(solution2(10, 40, 5))  # 2
+    print(solution2(10, 40, 30))  # 1
     print(solution2(10, 50, 30))
-    print(solution2(2, 5, 4))
+    print(solution2(2, 5, 4))  # -1
     end = time.time()
     print(end - start)
 
     start = time.time()
     print(solution3(1, 500, 5))
-    print(solution3(10, 40, 5))
-    print(solution3(10, 40, 30))
+    print(solution3(10, 40, 5))  # 2
+    print(solution3(10, 40, 30))  # 1
     print(solution3(10, 50, 30))
-    print(solution3(2, 5, 4))
+    print(solution3(2, 5, 4))  # -1
     end = time.time()
     print(end - start)
