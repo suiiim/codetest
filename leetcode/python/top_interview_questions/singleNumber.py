@@ -7,8 +7,8 @@ You must implement a solution with a linear runtime complexity and use only cons
 
 
 class Solution:
-    # Runtime = 85.10%
-    # Memory = 77.94%
+    # Runtime = 85.10 %
+    # Memory = 77.94 %
     def singleNumber(self, nums: List[int]) -> int:
         nums.sort()
         for i in range(1, len(nums), 2):
@@ -16,8 +16,8 @@ class Solution:
                 return nums[i - 1]
         return nums[-1]
 
-    # Rumtime = 97.87%
-    # Memory = 67.32%
+    # Rumtime = 97.87 %
+    # Memory = 67.32 %
     def singleNumber1(self, nums: List[int]) -> int:
         xor = 0
         n = len(nums)

@@ -7,8 +7,8 @@ Each element in the result must appear as many times as it shows in both arrays 
 
 
 class Solution:
-    # Runtime = 95.37%
-    # Memory = 60.89%
+    # Runtime = 95.37 %
+    # Memory = 60.89 %
     def intersect(self, nums1: List[int], nums2: List[int]) -> List[int]:
         nums1.sort()
         nums2.sort()

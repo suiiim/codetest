@@ -4,20 +4,20 @@ from typing import List
 
 
 class Solution:
-    # Runtime = 64.37%
-    # Memory = 13.70%
+    # Runtime = 64.37 %
+    # Memory = 13.70 %
     def containsDuplicate(self, nums: List[int]) -> bool:
         from collections import Counter
         c = Counter(nums)
         return False if len(c) == len(nums) else True
 
-    # Runtime = 85.91%
-    # Memory = 63.94%
+    # Runtime = 85.91 %
+    # Memory = 63.94 %
     def containsDuplicate1(self, nums: List[int]) -> bool:
         return False if len(set(nums)) == len(nums) else True
 
-    # Runtime = 93.95%
-    # Memory = 63.94%
+    # Runtime = 93.95 %
+    # Memory = 63.94 %
     def containsDuplicate2(self, nums: List[int]) -> bool:
         # brute force would be a double loop
         dictionary = set()
