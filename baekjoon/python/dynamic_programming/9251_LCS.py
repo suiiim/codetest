@@ -9,6 +9,8 @@ LCS(Longest Common Subsequence, 최장 공통 부분 수열)문제는 두 수열
 ACAYKP
 CAPCAK
 # 4
+
+# [참고] https://zrr.kr/Jm4Q
 """
 import sys
 
