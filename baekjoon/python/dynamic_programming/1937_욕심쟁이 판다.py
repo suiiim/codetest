@@ -58,8 +58,7 @@ solution()
 # Time 572 ms
 def solution1():
     n = int(sys.stdin.readline())
-    forest = [list(map(int, sys.stdin.readline().strip().split(' ')))
-              for _ in range(n)]
+    forest = [list(map(int, sys.stdin.readline().strip().split(' '))) for _ in range(n)]
     answer = find_out_lasting_days(forest, n)
     print(answer)
 
