@@ -1,5 +1,3 @@
-from collections import deque
-
 """
 이 문제는 아주 평범한 배낭에 관한 문제이다. 한 달 후면 국가의 부름을 받게 되는 준서는 여행을 가려고 한다. 세상과의 단절을 
 슬퍼하며 최대한 즐기기 위한 여행이기 때문에, 가지고 다닐 배낭 또한 최대한 가치 있게 싸려고 한다. 준서가 여행에 필요하다고 
@@ -17,7 +15,7 @@ from collections import deque
 4 8
 3 6
 5 12
-
+# 14
 
 냅색(Knapsack) 알고리즘
 1. Fraction Knapsack: 물건의 가격을 무게로 나누어 무게 대비 가격이 비싼 순서로 물건을 정렬(물건을 자를 수 있음)
@@ -29,14 +27,11 @@ input = sys.stdin.readline
 
 
 # Memory 279260 KB
-# Time 3068 ms
-def solution(example_list):
-    cnt, weight = map(int, example_list.popleft().split())
-    product = [[0, 0] for _ in range(cnt)]
+# Time 3084 ms
+def solution():
+    cnt, weight = map(int, input().split())
+    product = [list(map(int, input().split())) for _ in range(cnt)]
     dp = [[0] * (weight + 1) for _ in range(cnt + 1)]
-
-    for i in range(cnt):
-        product[i][0], product[i][1] = map(int, example_list.popleft().split())
 
     for i in range(1, cnt + 1):
         w, v = product[i - 1][0], product[i - 1][1]
@@ -47,6 +42,9 @@ def solution(example_list):
                 dp[i][j] = max(v + dp[i - 1][j - w], dp[i][j - 1], dp[i - 1][j])
 
     print(dp[-1][-1])
+
+
+solution()
 
 
 # 향상된 DP 풀이
@@ -72,12 +70,4 @@ def solution1():
     print(max(bag.keys()))
 
 
-if __name__ == '__main__':
-    solution1()
-    solution(deque(['4 7', '6 13', '4 8', '3 6', '5 12']))  # 14
-    solution(deque(['5 104', '3 90', '103 89', '2 87', '99 86', '98 85']))  # 263
-    solution(deque(['4 2', '1 1', '5 1', '5 1', '1 1']))  # 2
-    solution(deque(['15 100000', '61803 5', '62863 0', '41632 3', '12794 2', '71324 8', '55358 2', '34870 8', '41590 7', '17928 0', '24218 3', '18426 0', '65130 2', '16478 2', '93173 9', '38475 0']))  # 17
-    solution(deque(['1 1', '5 8']))  # 0
-    solution(deque(['3 5', '4 2', '3 4', '1 5']))  # 9
-    solution(deque(['10 999', '46 306', '60 311', '33 724', '18 342', '57 431', '49 288', '12 686', '89 389', '82 889', '16 289']))  # 4655
+solution1()
