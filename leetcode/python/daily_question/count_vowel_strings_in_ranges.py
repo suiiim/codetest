@@ -10,7 +10,7 @@ Return an array ans of size queries.length, where ans[i] is the answer to the it
 class Solution:
     # Runtime 23 ms -> 35.28%
     # Memory 49.82 MB -> 39.57%
-    def vowelStrings1(self, words: List[str], queries: List[List[int]]) -> List[int]:
+    def vowelStrings(self, words: List[str], queries: List[List[int]]) -> List[int]:
         vowel = ['a', 'e', 'i', 'o', 'u']
         vowel_cnt = [0] * len(words)
         result = [0] * len(queries)
@@ -52,5 +52,5 @@ class Solution:
 
 
 a = Solution()
-print(a.vowelStrings1(["aba", "bcb", "ece", "aa", "e"], [[0, 2], [1, 4], [1, 1]]))
-print(a.vowelStrings1(["a", "e", "i"], [[0, 2], [0, 1], [2, 2]]))
+print(a.vowelStrings(["aba", "bcb", "ece", "aa", "e"], [[0, 2], [1, 4], [1, 1]]))
+print(a.vowelStrings(["a", "e", "i"], [[0, 2], [0, 1], [2, 2]]))
