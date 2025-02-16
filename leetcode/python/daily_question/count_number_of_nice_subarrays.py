@@ -27,6 +27,8 @@ class Solution:
 
         return result
 
+    # Runtime 26 ms -> 100%
+    # Memory 22.97 MB -> 80.17%
     def numberOfSubarrays2(self, nums: List[int], k: int) -> int:
         evens = []
         even_count = 0
@@ -47,6 +49,6 @@ class Solution:
 
 
 a = Solution()
-print(a.numberOfSubarrays2(nums=[1, 1, 2, 1, 1], k=3))  # 2
-print(a.numberOfSubarrays2(nums=[2, 4, 6], k=1))  # 0
-print(a.numberOfSubarrays2(nums=[2, 2, 2, 1, 2, 2, 1, 2, 2, 2], k=2))  # 16
+print(a.numberOfSubarrays(nums=[1, 1, 2, 1, 1], k=3))  # 2
+print(a.numberOfSubarrays(nums=[2, 4, 6], k=1))  # 0
+print(a.numberOfSubarrays(nums=[2, 2, 2, 1, 2, 2, 1, 2, 2, 2], k=2))  # 16
