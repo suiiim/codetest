@@ -17,6 +17,8 @@ class Solution:
         else:
             return [-1, -1]
 
+    # Runtime 0 ms -> 100%
+    # Memory 18.92 MB -> 75.04%
     def searchRange2(self, nums: List[int], target: int) -> List[int]:
         n = len(nums)
         x = self.fisrtOcc(nums, n, target)
