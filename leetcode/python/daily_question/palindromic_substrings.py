@@ -19,16 +19,16 @@ class Solution:
     # Runtime 91 ms -> 97.96%
     # Memory 17.76 MB -> 65.66%
     def countSubstrings2(self, s: str) -> int:
-        left, right = 0, len(s)
+        result, right = 0, len(s)
         for i in range(right):
             for a, b in [(i, i), (i, i + 1)]:
                 while a >= 0 and b < right and s[a] == s[b]:
                     a -= 1
                     b += 1
-                left += (b - a) // 2
-        return left
+                result += (b - a) // 2
+        return result
 
 
 a = Solution()
-print(a.countSubstrings2("abc"))  # 3
-print(a.countSubstrings2("aaa"))  # 6
+print(a.countSubstrings("abc"))  # 3
+print(a.countSubstrings("aaa"))  # 6
