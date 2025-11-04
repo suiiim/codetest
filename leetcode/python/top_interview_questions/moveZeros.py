@@ -23,6 +23,16 @@ class Solution:
                     left += 1
                 right += 1
 
+    def moveZeroes1(self, nums: List[int]) -> None:
+        """
+        Do not return anything, modify nums in-place instead.
+        """
+        left = 0
+        for right in range(len(nums)):
+            if nums[right] != 0:
+                nums[left], nums[right] = nums[right], nums[left]
+                left += 1
+
 
 a = Solution()
 print(a.moveZeroes([0, 1, 0, 3, 12]))  # [1,3,12,0,0]
