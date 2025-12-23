@@ -27,6 +27,20 @@ class Solution:
 
         return dp[amount]
 
+    # Runtime 191 ms -> 86.4%
+    # Memory 17.51 MB -> 98.66%
+    def change2(self, amount: int, coins: List[int]) -> int:
+        if amount == 0:
+            return 1
+
+        dp = [0] * (amount + 1)
+        dp[0] = 1
+        for coin in sorted(coins):
+            for i in range(coin, amount + 1):
+                dp[i] += dp[i - coin]
+
+        return dp[amount]
+
 
 a = Solution()
 print(a.change(amount=5, coins=[5, 2, 1]))  # 4
